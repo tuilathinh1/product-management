@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Statistics Dashboard</title>
+    <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+            color: #2d3748;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.98);
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            color: #4a5568;
+            margin-bottom: 30px;
+            text-align: center;
+            font-weight: 800;
+            font-size: 32px;
+            text-transform: uppercase;
+            letter-spacing: -0.5px;
+            background: linear-gradient(to right, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-link {
+            display: inline-flex;
+            align-items: center;
+            margin-bottom: 30px;
+            text-decoration: none;
+            color: #667eea;
+            font-weight: 600;
+            font-size: 15px;
+            transition: all 0.2s;
+        }
+        .nav-link:hover { color: #5a67d8; transform: translateX(-3px); }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+            border-color: #667eea;
+        }
+
+        .card h3 {
+            margin: 0 0 10px;
+            color: #718096;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 700;
+        }
+
+        .card .value {
+            font-size: 36px;
+            font-weight: 800;
+            color: #2d3748;
+        }
+        
+        .card.blue .value { color: #4299e1; }
+        .card.green .value { color: #48bb78; }
+        .card.purple .value { color: #9f7aea; }
+
+        .section {
+            background: #f8fafc;
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            border: 1px solid #e2e8f0;
+        }
+
+        h2 {
+            font-size: 20px;
+            color: #4a5568;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 10px;
+        }
+        ul { list-style: none; }
+        li {
+            padding: 12px 0;
+            border-bottom: 1px dashed #cbd5e0;
+            display: flex;
+            justify-content: space-between;
+            font-size: 15px;
+        }
+        li:last-child { border-bottom: none; }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        th, td { padding: 12px 15px; text-align: left; border-bottom: 1px solid #e2e8f0; }
+        th { background: #edf2f7; font-size: 13px; text-transform: uppercase; color: #4a5568; }
+        .alert-text { color: #e53e3e; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="/products" class="nav-link">← Back to Product List</a>
+        <h1>Dashboard</h1>
+
+    <div class="stats-grid">
+        <div class="card blue">
+            <h3>Total Products</h3>
+            <div class="value" th:text="${totalProducts}">0</div>
+        </div>
+        <div class="card green">
+            <h3>Inventory Value</h3>
+            <div class="value" th:text="${#numbers.formatCurrency(totalValue)}">$0.00</div>
+        </div>
+        <div class="card purple">
+            <h3>Avg Price</h3>
+            <div class="value" th:text="${#numbers.formatCurrency(avgPrice)}">$0.00</div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Products by Category</h2>
+        <ul>
+            <li th:each="entry : ${categoryStats}">
+                <span th:text="${entry.key}">Category</span>: 
+                <strong th:text="${entry.value}">0</strong>
+            </li>
+        </ul>
+    </div>
+
+    <div class="section" th:if="${not #lists.isEmpty(lowStockProducts)}">
+        <h2 class="alert">⚠️ Low Stock Alerts (Qty < 10)</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Product Code</th>
+                    <th>Name</th>
+                    <th>Quantity</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="p : ${lowStockProducts}">
+                    <td th:text="${p.productCode}"></td>
+                    <td th:text="${p.name}"></td>
+                    <td th:text="${p.quantity}" style="color: red; font-weight: bold;"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

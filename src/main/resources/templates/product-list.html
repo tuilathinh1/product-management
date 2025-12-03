@@ -10,132 +10,197 @@
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
-            padding: 20px;
+            padding: 40px 20px;
+            color: #333;
         }
-        
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
             background: white;
-            border-radius: 10px;
+            border-radius: 12px;
             padding: 30px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
         }
-        
+
         h1 {
-            color: #667eea;
-            margin-bottom: 20px;
+            color: #4a5568;
+            margin-bottom: 25px;
             text-align: center;
+            font-weight: 700;
+            font-size: 28px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
-        
+
+       
         .alert {
             padding: 15px;
-            margin-bottom: 20px;
-            border-radius: 5px;
+            margin-bottom: 25px;
+            border-radius: 8px;
+            font-weight: 500;
+            text-align: center;
         }
-        
+
         .alert-success {
             background-color: #d4edda;
             color: #155724;
             border: 1px solid #c3e6cb;
         }
-        
+
         .alert-error {
             background-color: #f8d7da;
             color: #721c24;
             border: 1px solid #f5c6cb;
         }
-        
-        .actions {
+
+       
+        .top-bar {
             display: flex;
             justify-content: space-between;
+            align-items: center;
             margin-bottom: 20px;
-            flex-wrap: wrap;
-            gap: 10px;
         }
+        
+        .top-bar div {
+            display: flex;
+            gap: 10px; 
+        }
+
+      
+        .search-panel {
+            background: #f7fafc;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .search-form {
+            display: flex;
+            flex-wrap: wrap; 
+            gap: 15px;
+            align-items: center;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+       
+        .search-form input, 
+        .search-form select {
+            padding: 10px 15px;
+            border: 1px solid #cbd5e0;
+            border-radius: 6px;
+            font-size: 14px;
+            outline: none;
+            transition: all 0.2s;
+            min-width: 150px; 
+        }
+
+        .search-form input:focus, 
+        .search-form select:focus {
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
         
         .btn {
             padding: 10px 20px;
             border: none;
-            border-radius: 5px;
+            border-radius: 6px;
             cursor: pointer;
             text-decoration: none;
-            display: inline-block;
-            transition: all 0.3s;
-        }
-        
-        .btn-primary {
-            background-color: #667eea;
-            color: white;
-        }
-        
-        .btn-primary:hover {
-            background-color: #5568d3;
-        }
-        
-        .btn-success {
-            background-color: #28a745;
-            color: white;
-        }
-        
-        .btn-danger {
-            background-color: #dc3545;
-            color: white;
-        }
-        
-        .btn-sm {
-            padding: 5px 10px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
             font-size: 14px;
+            font-weight: 600;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
-        
-        .search-form {
-            display: flex;
-            gap: 10px;
+
+        .btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.15);
         }
-        
-        .search-form input {
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            flex: 1;
+
+        .btn-primary { background-color: #667eea; color: white; } 
+        .btn-primary:hover { background-color: #5a67d8; }
+
+        .btn-info { background-color: #3182ce; color: white; } 
+        .btn-info:hover { background-color: #2b6cb0; }
+
+        .btn-secondary { background-color: #718096; color: white; }
+        .btn-secondary:hover { background-color: #4a5568; }
+
+        .btn-success { background-color: #48bb78; color: white; }
+        .btn-success:hover { background-color: #38a169; }
+
+        .btn-danger { background-color: #f56565; color: white; }
+        .btn-danger:hover { background-color: #e53e3e; }
+
+        .btn-sm {
+            padding: 6px 12px;
+            font-size: 13px;
         }
+
         
         table {
             width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
+            border-collapse: separate; 
+            border-spacing: 0;
+            margin-top: 10px;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            overflow: hidden;
         }
-        
+
         th, td {
-            padding: 12px;
+            padding: 15px;
             text-align: left;
-            border-bottom: 1px solid #ddd;
+            border-bottom: 1px solid #e2e8f0;
         }
-        
+
         th {
-            background-color: #667eea;
-            color: white;
+            background-color: #edf2f7;
+            color: #4a5568;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 13px;
+            letter-spacing: 0.5px;
         }
-        
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
         tr:hover {
-            background-color: #f5f5f5;
+            background-color: #f7fafc;
         }
-        
-        .empty-state {
-            text-align: center;
-            padding: 40px;
-            color: #666;
-        }
+
         
         .actions-column {
             display: flex;
-            gap: 5px;
+            gap: 8px; 
         }
+
+        
+        .empty-state {
+            text-align: center;
+            padding: 50px;
+            color: #a0aec0;
+            font-size: 16px;
+        }
+        .search-box { background: #eee; padding: 15px; margin-bottom: 20px; border-radius: 5px; }
+        .search-box input, .search-box select { margin-right: 10px; padding: 5px; }
     </style>
 </head>
 <body>
@@ -153,12 +218,42 @@
         </div>
         
         <!-- Actions -->
-        <div class="actions">
-            <a th:href="@{/products/new}" class="btn btn-primary">➕ Add New Product</a>
-            
+        <div class="top-bar">
+            <div>
+                <a th:href="@{/products/new}" class="btn btn-primary">➕ Add New Product</a>
+
+                <a th:href="@{/dashboard}" class="btn btn-info">📊 View Dashboard</a>
+            </div>
+        </div>
+
+        <!-- Search Panel -->
+        <div class="search-panel">
             <form th:action="@{/products/search}" method="get" class="search-form">
-                <input type="text" name="keyword" th:value="${keyword}" placeholder="Search products..." />
+
+                <div class="form-group">
+                    <input type="text" name="name" th:value="${param.name}" placeholder="Product Name..." />
+                </div>
+
+                <div class="form-group">
+                    <select name="category">
+                        <option value="">-- All Categories --</option>
+                        <option th:each="cat : ${categories}" 
+                                th:value="${cat}" 
+                                th:text="${cat}"
+                                th:selected="${cat == param.category}">
+                        </option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <input type="number" name="minPrice" placeholder="Min Price" step="0.01" />
+                </div>
+                <div class="form-group">
+                    <input type="number" name="maxPrice" placeholder="Max Price" step="0.01" />
+                </div>
+
                 <button type="submit" class="btn btn-primary">🔍 Search</button>
+                <a th:href="@{/products}" class="btn btn-secondary">Reset</a>
             </form>
         </div>
         
@@ -166,16 +261,62 @@
         <div th:if="${products != null and !products.isEmpty()}">
             <table>
                 <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Code</th>
-                        <th>Name</th>
-                        <th>Price</th>
-                        <th>Quantity</th>
-                        <th>Category</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
+                        <tr>
+                            <th>ID</th>
+                            
+                            <th>
+                                <a th:href="@{/products/search(
+                                        name=${param.name}, 
+                                        category=${param.category},
+                                        minPrice=${param.minPrice},
+                                        maxPrice=${param.maxPrice},
+                                        sortBy='productCode', 
+                                        sortDir=${sortDir=='asc' ? 'desc' : 'asc'}
+                                )}" 
+                                style="text-decoration: none; color: #4a5568; display: block; width: 100%;">
+                                    Code
+                                    <span th:if="${sortBy == 'productCode'}" th:text="${sortDir == 'asc' ? '▲' : '▼'}"></span>
+                                    <span th:unless="${sortBy == 'productCode'}" style="opacity: 0.3;">↕</span>
+                                </a>
+                            </th>
+                            
+                            <th>
+                                <a th:href="@{/products/search(
+                                        name=${param.name}, 
+                                        category=${param.category},
+                                        minPrice=${param.minPrice},
+                                        maxPrice=${param.maxPrice},
+                                        sortBy='name', 
+                                        sortDir=${sortDir=='asc' ? 'desc' : 'asc'}
+                                )}" 
+                                style="text-decoration: none; color: #4a5568; display: block; width: 100%;">
+                                    Name
+                                    <span th:if="${sortBy == 'name'}" th:text="${sortDir == 'asc' ? '▲' : '▼'}"></span>
+                                    <span th:unless="${sortBy == 'name'}" style="opacity: 0.3;">↕</span>
+                                </a>
+                            </th>
+                            
+                            <th>
+                                <a th:href="@{/products/search(
+                                        name=${param.name}, 
+                                        category=${param.category},
+                                        minPrice=${param.minPrice},
+                                        maxPrice=${param.maxPrice},
+                                        sortBy='price', 
+                                        sortDir=${sortDir=='asc' ? 'desc' : 'asc'}
+                                )}" 
+                                style="text-decoration: none; color: #4a5568; display: block; width: 100%;">
+                                    Price
+                                    <span th:if="${sortBy == 'price'}" th:text="${sortDir == 'asc' ? '▲' : '▼'}"></span>
+                                    <span th:unless="${sortBy == 'price'}" style="opacity: 0.3;">↕</span>
+                                </a>
+                            </th>
+                            
+                            <th>Quantity</th>
+                            <th>Category</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
                 <tbody>
                     <tr th:each="product : ${products}">
                         <td th:text="${product.id}">1</td>
@@ -197,6 +338,49 @@
                     </tr>
                 </tbody>
             </table>
+            <div th:if="${totalPages > 1}" style="margin-top: 20px; display: flex; justify-content: center; align-items: center; gap: 5px;">
+            
+                <a th:if="${currentPage > 0}"
+                th:href="@{/products/search(
+                    page=${currentPage - 1},
+                    name=${param.name}, 
+                    category=${param.category},
+                    minPrice=${param.minPrice},
+                    maxPrice=${param.maxPrice},
+                    sortBy=${param.sortBy},
+                    sortDir=${param.sortDir}
+                )}" class="btn btn-secondary btn-sm">Previous</a>
+
+                <span th:each="i : ${#numbers.sequence(0, totalPages - 1)}">
+                    <a th:href="@{/products/search(
+                        page=${i},
+                        name=${param.name}, 
+                        category=${param.category},
+                        minPrice=${param.minPrice},
+                        maxPrice=${param.maxPrice},
+                        sortBy=${param.sortBy},
+                        sortDir=${param.sortDir}
+                    )}"
+                    th:text="${i + 1}"
+                    th:class="${currentPage == i} ? 'btn btn-primary btn-sm' : 'btn btn-secondary btn-sm'"
+                    style="width: 30px; display: inline-block; text-align: center;">1</a>
+                </span>
+
+                <a th:if="${currentPage < totalPages - 1}"
+                th:href="@{/products/search(
+                    page=${currentPage + 1},
+                    name=${param.name}, 
+                    category=${param.category},
+                    minPrice=${param.minPrice},
+                    maxPrice=${param.maxPrice},
+                    sortBy=${param.sortBy},
+                    sortDir=${param.sortDir}
+                )}" class="btn btn-secondary btn-sm">Next</a>
+                
+                <span style="margin-left: 10px; color: #666;">
+                    Total: <b th:text="${totalItems}"></b> items
+                </span>
+            </div>
         </div>
         
         <!-- Empty State -->
